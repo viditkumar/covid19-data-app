@@ -16,6 +16,30 @@ public class Covid19CountryData {
 	private String recovered;
 	private String state;
 	private String statecode;
+	private String statenotes;
+	
+
+	public Covid19CountryData() {
+		super();
+	}
+
+	public Covid19CountryData(String country, String active, String confirmed, String deaths, String deltaconfirmed,
+			String deltadeaths, String deltarecovered, String lastupdatedtime, String recovered, String state,
+			String statecode, String statenotes) {
+		super();
+		this.country = country;
+		this.active = active;
+		this.confirmed = confirmed;
+		this.deaths = deaths;
+		this.deltaconfirmed = deltaconfirmed;
+		this.deltadeaths = deltadeaths;
+		this.deltarecovered = deltarecovered;
+		this.lastupdatedtime = lastupdatedtime;
+		this.recovered = recovered;
+		this.state = state;
+		this.statecode = statecode;
+		this.statenotes = statenotes;
+	}
 
 	public String getCountry() {
 		return country;
@@ -103,5 +127,13 @@ public class Covid19CountryData {
 
 	public void setStatecode(String statecode) {
 		this.statecode = statecode;
+	}
+	
+	public String getStatenotes() {
+		return statenotes;
+	}
+
+	public void setStatenotes(String statenotes) {
+		this.statenotes = statenotes;
 	}
 }

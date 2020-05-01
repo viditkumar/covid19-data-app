@@ -20,5 +20,6 @@ CREATE TABLE covid19_country_data (
 	lastUpdatedtime VARCHAR2,
 	recovered VARCHAR2,
 	state VARCHAR2,
-	stateCode VARCHAR2
+	stateCode VARCHAR2,
+	stateNotes VARCHAR2
 );

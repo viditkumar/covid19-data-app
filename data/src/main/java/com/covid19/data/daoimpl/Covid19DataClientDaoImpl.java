@@ -28,6 +28,9 @@ public class Covid19DataClientDaoImpl implements Covid19DataClientDao {
 	@Value("${covid19.insert.countrydata}")
 	public String insertCountryData;
 
+	@Value("${covid19.get.countrydata}")
+	public String getCountryData;
+
 	@Override
 	public void saveTotalData(List<Covid19TotalData> covid19TotalData) {
 		// batch-insert
@@ -68,6 +71,7 @@ public class Covid19DataClientDaoImpl implements Covid19DataClientDao {
 				ps.setString(9, covid19CountryData.get(i).getRecovered());
 				ps.setString(10, covid19CountryData.get(i).getState());
 				ps.setString(11, covid19CountryData.get(i).getStatecode());
+				ps.setString(12, covid19CountryData.get(i).getStatenotes());
 			}
 
 			@Override
@@ -77,4 +81,13 @@ public class Covid19DataClientDaoImpl implements Covid19DataClientDao {
 		});
 	}
 
+	@Override
+	public List<Covid19CountryData> getCountryData() {
+		return jdbcTemplate.query(getCountryData,
+				(rs, rowNum) -> new Covid19CountryData(rs.getString("country"), rs.getString("active"),
+						rs.getString("confirmed"), rs.getString("deaths"), rs.getString("deltaconfirmed"),
+						rs.getString("deltadeaths"), rs.getString("deltarecovered"), rs.getString("lastupdatedtime"),
+						rs.getString("recovered"), rs.getString("state"), rs.getString("statecode"),
+						rs.getString("statenotes")));
+	}
 }
